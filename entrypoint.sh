@@ -22,10 +22,15 @@ if [ -n "$GCP_SA_KEY" ]; then
   export GOOGLE_APPLICATION_CREDENTIALS=/opt/gcp_key.json
 fi
 
+if [ -z "$PROJECT_ID" ]; then
+  echo "Need a project_id for deploying"
+  exit 126
+fi
+
 # Generate hugo site
 hugo
 
 # Deploy it on Firebase
 echo "About to try to deploy using $GOOGLE_APPLICATION_CREDENTIALS"
 echo "Using service account key from $(cat $GOOGLE_APPLICATION_CREDENTIALS |jq -r ".client_email")"
-firebase deploy
+firebase deploy --project="$PROJECT_ID"

@@ -12,8 +12,13 @@ inputs:
     description: "Service account key in json. Set it in Github Secrets as FIREBASE_SERVICE_ACCOUNT variable."
     required: true
 
+  project_id:
+    description: "Project id"
+    required: true
+
 runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
     - ${{ inputs.gcp_sa_key }}
+    - ${{ inputs.project_id }}
