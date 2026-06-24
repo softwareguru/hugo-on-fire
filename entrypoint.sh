@@ -5,7 +5,7 @@ hugo version
 
 # Export google application credentials
 if [ -z "$GCP_SA_KEY" ] && [ -z "$GOOGLE_APPLICATION_CREDENTIALS" ]; then
-  echo "Either FIREBASE_TOKEN or GCP_SA_KEY or GOOGLE_APPLICATION_CREDENTIALS is required to run commands with the firebase cli"
+  echo "Either GCP_SA_KEY or GOOGLE_APPLICATION_CREDENTIALS is required to run commands with the firebase cli"
   exit 126
 fi
 
@@ -26,5 +26,5 @@ fi
 hugo
 
 # Deploy it on Firebase
-firebase use
-firebase deploy --non-interactive
+echo "About to try to deploy using $GOOGLE_APPLICATION_CREDENTIALS"
+firebase deploy
