@@ -32,5 +32,6 @@ hugo
 
 # Deploy it on Firebase
 echo "About to try to deploy using $GOOGLE_APPLICATION_CREDENTIALS"
-echo "Using service account key from $(cat $GOOGLE_APPLICATION_CREDENTIALS |jq -r ".client_email")"
+echo "Using service account key from $(cat $GOOGLE_APPLICATION_CREDENTIALS |jq -r ".client_email") and deploying to $PROJECT_ID"
+firebase use $PROJECT_ID
 firebase deploy --project="$PROJECT_ID"
