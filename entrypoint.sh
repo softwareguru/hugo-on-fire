@@ -27,4 +27,5 @@ hugo
 
 # Deploy it on Firebase
 echo "About to try to deploy using $GOOGLE_APPLICATION_CREDENTIALS"
+echo "Using service account key from $(cat $GOOGLE_APPLICATION_CREDENTIALS |jq -r ".client_email")"
 firebase deploy
