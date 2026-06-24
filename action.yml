@@ -8,12 +8,12 @@ branding:
   label: 'Hugo On Fire'
 
 inputs:
-  firebase_token:
-    description: "Firebase token used to deploy on Firebase on your behalf. You can get it using command 'firebase login:ci' and then set it in Github Secrets as FIREBASE_TOKEN variable."
+  gcp_sa_key:
+    description: "Service account key in json. Set it in Github Secrets as FIREBASE_SERVICE_ACCOUNT variable."
     required: true
 
 runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
-    - ${{ inputs.firebase_token }}
+    - ${{ inputs.gcp_sa_key }}
